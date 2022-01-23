@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Building.A.RESTful.API.With.NancyFx
+namespace Building.A.RESTful.API.With.NancyFx;
+
+public class CustomJsonSerializer : JsonSerializer
 {
-    public class CustomJsonSerializer : JsonSerializer
+    public CustomJsonSerializer()
     {
-        public CustomJsonSerializer()
-        {
-            ContractResolver = new CamelCasePropertyNamesContractResolver();
-            Formatting = Formatting.Indented;
-        }
+        ContractResolver = new CamelCasePropertyNamesContractResolver();
+        Formatting = Formatting.Indented;
     }
 }
