@@ -29,10 +29,10 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="8.6.3"/>
-        <PackageReference Include="Microsoft.AspNetCore.Owin" Version="6.0.1"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Owin" Version="6.0.5"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.Owin.SelfHost" Version="4.2.0"/>
+        <PackageReference Include="Microsoft.Owin.SelfHost" Version="4.2.2"/>
         <PackageReference Include="Nancy" Version="2.0.0"/>
         <PackageReference Include="Nancy.Authentication.Basic" Version="2.0.0"/>
         <PackageReference Include="Nancy.Owin" Version="2.0.0"/>
