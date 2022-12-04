@@ -14,7 +14,7 @@ public class PersonRepository
         _repo = new Dictionary<int, Person>();
     }
 
-    public static PersonRepository Instance => _instance ?? (_instance = new PersonRepository());
+    public static PersonRepository Instance => _instance ??= new PersonRepository();
 
     public Person[] GetAll()
     {
@@ -23,16 +23,15 @@ public class PersonRepository
 
     public Person Get(int id)
     {
-        if (!_repo.ContainsKey(id))
-            throw new ApplicationException(string.Format("Person with id {0} doesnot exist", id));
-
-        return _repo[id];
+        return !_repo.ContainsKey(id) ? throw new ApplicationException(string.Format("Person with id {0} doesnot exist", id)) : _repo[id];
     }
 
     public void Add(Person person)
     {
         if (_repo.ContainsKey(person.Id))
+        {
             throw new ApplicationException(string.Format("Person with id {0} already exists", person.Id));
+        }
 
         _repo.Add(person.Id, person);
     }
@@ -40,7 +39,9 @@ public class PersonRepository
     public void Modify(Person person)
     {
         if (!_repo.ContainsKey(person.Id))
+        {
             throw new ApplicationException(string.Format("Person with id {0} doesnot exist", person.Id));
+        }
 
         _repo[person.Id] = person;
     }
@@ -48,8 +49,10 @@ public class PersonRepository
     public void Delete(Person person)
     {
         if (!_repo.ContainsKey(person.Id))
+        {
             throw new ApplicationException(string.Format("Person with id {0} doesnot exist", person.Id));
+        }
 
-        _repo.Remove(person.Id);
+        _ = _repo.Remove(person.Id);
     }
 }

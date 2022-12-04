@@ -12,8 +12,8 @@ public class Bootstrapper : DefaultNancyBootstrapper
     {
         base.ConfigureApplicationContainer(container);
 
-        container.Register<JsonSerializer, CustomJsonSerializer>();
-        container.Register<IUserValidator, UserValidator>();
+        _ = container.Register<JsonSerializer, CustomJsonSerializer>();
+        _ = container.Register<IUserValidator, UserValidator>();
     }
 
     protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)

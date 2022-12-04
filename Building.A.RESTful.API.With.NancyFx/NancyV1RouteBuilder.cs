@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Nancy;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Nancy;
 
 namespace Building.A.RESTful.API.With.NancyFx;
 

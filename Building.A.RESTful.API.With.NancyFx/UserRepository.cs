@@ -14,7 +14,7 @@ public class UserRepository
         _repo = new Dictionary<string, User>();
     }
 
-    public static UserRepository Instance => _instance ?? (_instance = new UserRepository());
+    public static UserRepository Instance => _instance ??= new UserRepository();
 
     public User[] GetAll()
     {
@@ -23,16 +23,17 @@ public class UserRepository
 
     public User Get(string userName)
     {
-        if (!_repo.ContainsKey(userName))
-            throw new ApplicationException(string.Format("User with name '{0}' doesnot exist", userName));
-
-        return _repo[userName];
+        return !_repo.ContainsKey(userName)
+            ? throw new ApplicationException(string.Format("User with name '{0}' doesnot exist", userName))
+            : _repo[userName];
     }
 
     public void Add(User user)
     {
         if (_repo.ContainsKey(user.UserName))
+        {
             throw new ApplicationException(string.Format("User with name '{0}' already exists", user.UserName));
+        }
 
         _repo.Add(user.UserName, user);
     }
@@ -40,7 +41,9 @@ public class UserRepository
     public void Modify(User user)
     {
         if (!_repo.ContainsKey(user.UserName))
+        {
             throw new ApplicationException(string.Format("User with name '{0}' doesnot exist", user.UserName));
+        }
 
         _repo[user.UserName] = user;
     }
@@ -48,8 +51,10 @@ public class UserRepository
     public void Delete(User user)
     {
         if (!_repo.ContainsKey(user.UserName))
+        {
             throw new ApplicationException(string.Format("User with name '{0}' doesnot exist", user.UserName));
+        }
 
-        _repo.Remove(user.UserName);
+        _ = _repo.Remove(user.UserName);
     }
 }

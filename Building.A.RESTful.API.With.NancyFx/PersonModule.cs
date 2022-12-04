@@ -1,7 +1,7 @@
-﻿using System;
-using Nancy;
+﻿using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Security;
+using System;
 
 namespace Building.A.RESTful.API.With.NancyFx;
 
@@ -33,8 +33,11 @@ public class PersonModule : NancyV1Module
 
     private dynamic AddAction(dynamic parameters)
     {
-        var model = this.BindAndValidate<Person>();
-        if (!ModelValidationResult.IsValid) throw new ApplicationException("Object is not a valid person");
+        Person model = this.BindAndValidate<Person>();
+        if (!ModelValidationResult.IsValid)
+        {
+            throw new ApplicationException("Object is not a valid person");
+        }
 
         PersonRepository.Instance.Add(model);
 
@@ -43,8 +46,11 @@ public class PersonModule : NancyV1Module
 
     private dynamic ModifyAction(dynamic parameters)
     {
-        var model = this.BindAndValidate<Person>();
-        if (!ModelValidationResult.IsValid) throw new ApplicationException("Object is not a valid person");
+        Person model = this.BindAndValidate<Person>();
+        if (!ModelValidationResult.IsValid)
+        {
+            throw new ApplicationException("Object is not a valid person");
+        }
 
         PersonRepository.Instance.Modify(model);
 
@@ -53,8 +59,11 @@ public class PersonModule : NancyV1Module
 
     private dynamic DeleteAction(dynamic parameters)
     {
-        var model = this.BindAndValidate<Person>();
-        if (!ModelValidationResult.IsValid) throw new ApplicationException("Object is not a valid person");
+        Person model = this.BindAndValidate<Person>();
+        if (!ModelValidationResult.IsValid)
+        {
+            throw new ApplicationException("Object is not a valid person");
+        }
 
         PersonRepository.Instance.Delete(model);
 

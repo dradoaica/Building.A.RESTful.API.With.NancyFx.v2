@@ -6,9 +6,9 @@ public class PersonValidator : AbstractValidator<Person>
 {
     public PersonValidator()
     {
-        RuleFor(p => p.FirstName).Must((p, firstName) => !string.IsNullOrWhiteSpace(firstName))
+        _ = RuleFor(p => p.FirstName).Must((p, firstName) => !string.IsNullOrWhiteSpace(firstName))
             .WithMessage("First name must be filled in");
-        RuleFor(p => p.LastName).Must((p, lastName) => !string.IsNullOrWhiteSpace(lastName))
+        _ = RuleFor(p => p.LastName).Must((p, lastName) => !string.IsNullOrWhiteSpace(lastName))
             .WithMessage("Last name must be filled in");
     }
 }

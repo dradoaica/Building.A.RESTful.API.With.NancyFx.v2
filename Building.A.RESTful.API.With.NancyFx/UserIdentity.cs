@@ -13,8 +13,12 @@ public class UserIdentity : ClaimsPrincipal
     {
         UserName = userName;
         UserIdentifier = userIdentifier;
-        var claimList = new List<Claim>();
-        foreach (string claim in claims) claimList.Add(new Claim(ClaimTypes.Role, claim));
+        List<Claim> claimList = new();
+        foreach (string claim in claims)
+        {
+            claimList.Add(new Claim(ClaimTypes.Role, claim));
+        }
+
         AddIdentity(new ClaimsIdentity(claimList, "Basic"));
     }
 
